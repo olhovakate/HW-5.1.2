@@ -1,0 +1,18 @@
+{
+  "name": "cypress1st",
+  "version": "1.0.0",
+  "description": "1st cypress test",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "olkhova",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.2"
+  }
+}
