@@ -1,5 +1,6 @@
 describe("Correct loading verifier page", () => {
     it("loading main page",()=>{
+        Cypress.config("baseUrl","https://sqlverifier-live-6e21ca0ed768.herokuapp.com")
         cy.visit("/?page=1&sort=id,asc");
         cy.get('#header-tabs').should('not.have.id', 'docs-menu');
     });

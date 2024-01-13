@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
-    "cyp:run": "npx cypress run",
-    "cy:run": "npx cypress run --record --key 6313990e-31e7-4bc7-b58a-0c0a1353cef3"
+    "cy:run:sqlverifier-live": "npx cypress run --spec 'cypress/e2e/sqlverifier-live.cy.js'",
+    "cy:run:sqlverifier-staging": "npx cypress run --spec 'cypress/e2e/sqlverifier-staging.cy.js'",
+    "cy:run:all":"npm run cy:run:sqlverifier-live && cy:run:sqlverifier-staging",
+    "cy:run:dashboard": "npx cypress run --record --key 6313990e-31e7-4bc7-b58a-0c0a1353cef3"
   },
   "keywords": [
     "cypress"
