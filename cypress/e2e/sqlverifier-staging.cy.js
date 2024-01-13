@@ -47,7 +47,7 @@ describe("Correct loading verifier page", () => {
       //3
       
       cy.get('li[class="nav-item"]').should('be.visible').click();
-      cy.url().should('eq','https://sqlverifier-live-6e21ca0ed768.herokuapp.com/?page=1&sort=id,asc');
+      cy.url().should('eq','https://sqlverifier-staging-08050d656f7a.herokuapp.com/?page=1&sort=id,asc');
       
 
       //№4
