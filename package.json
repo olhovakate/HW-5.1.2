@@ -12,7 +12,7 @@
     "cy:run:sqlverifier-staging:electron": "npx cypress run --spec 'cypress/e2e/sqlverifier-staging.cy.js' --browser electron",
     "cy:run:all":"npx run cy:run:sqlverifier-live && npm run cy:run:sqlverifier-staging",
     "cy:run:dashboard": "npx cypress run --record --key 6313990e-31e7-4bc7-b58a-0c0a1353cef3",
-    "cy:run:all-2":"npm run  cy:run:sqlverifier-live:chrome && npm run cy:run:sqlverifier-staging:electron && npm run cy:run:dashboard"
+    "cy:run:all-2":"npm run cy:run:dashboard cy:run:sqlverifier-live:chrome && npm run cy:run:sqlverifier-staging:electron"
     
   },
   "keywords": [
