@@ -23,3 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('validLogin', (login, password) => {
+
+    cy.visit("baseUrl","/?page=1&sort=id,asc");
+    cy.get('#account-menu').click();
+    cy.get('#login-item').click();
+    cy.get('input[name="username"]').type(login);
+    cy.get('input[name="password"]').type(password);
+    cy.get('button[type="submit"]').click();
+    cy.get('#entity-menu').should('be.visible');
+  });
+  
+  Cypress.Commands.add('switchLanguage', (language, expectedText) => {
+    cy.get('#header-tabs > li:nth-child(4) > a').click();
+    cy.contains(language).click();
+    cy.get('#header-tabs').contains(expectedText);
+  });
+
+  Cypress.Commands.add('logout', () => {
+    cy.get('#account-menu').click();
+    cy.get('[data-cy="logout"]').click();
+    cy.url().should('include', '/logout');
+    cy.get('div.p-5').should('include.text', 'Logged out successfully!');
+  });
+  

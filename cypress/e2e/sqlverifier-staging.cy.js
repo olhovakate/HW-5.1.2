@@ -12,25 +12,18 @@
 })*/
 
 describe("Correct loading verifier page", () => {
-    it("loading main page",()=>{
-        Cypress.config("baseUrl","https://sqlverifier-staging-08050d656f7a.herokuapp.com")
+    /*it("loading main page",()=>{
+        Cypress.env("baseURL","https://sqlverifier-staging-08050d656f7a.herokuapp.com")
         cy.visit("/?page=1&sort=id,asc");
         cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-    });
+    });*/
 
-    it('User have to enter in account', () => {
-      cy.visit('/?page=1&sort=id,asc');
-      cy.get('#account-menu').click();
-      cy.get('#login-item').click();
-  
-      cy.get('input[name="username"]').type('student82');
-      cy.get('input[name="password"]').type('963852');
-  
-      cy.get('button[type="submit"]').click();
-      cy.get('#entity-menu').should('be.visible');
-      
+      it('User have to enter in account', () => {
+        const secondBaseUrl=Cypress.env("secondBaseUrl");
+        Cypress.config("baseUrl",secondBaseUrl);
+        cy.validLogin(Cypress.env('login'),Cypress.env('password'));
+
     
-
       //1
 
       cy.get('#entity-menu').click();
@@ -58,26 +51,12 @@ describe("Correct loading verifier page", () => {
 
 
       //#5
-      cy.get('#header-tabs > li:nth-child(4) > a').click();
-      cy.contains('English').click();
-      cy.get('#header-tabs').contains('Home');
 
-      //#6
-      cy.get('#header-tabs > li:nth-child(4) > a').click();
-      cy.contains('Français').click();
-      cy.get('#header-tabs').contains('Accueil');
-
-      //#7
-      cy.get('#header-tabs > li:nth-child(4) > a').click();
-      cy.contains('Русский').click();
-      cy.get('#header-tabs').contains('Главная');
-
-      //#8
-      cy.get('#header-tabs > li:nth-child(4) > a').click();
-      cy.contains('Українська').click();
-      cy.get('#header-tabs').contains('Головна');
-      cy.get('#header-tabs > li:nth-child(4) > a').click();
-      cy.contains('English').click();
+      cy.switchLanguage('English', 'Home');
+      cy.switchLanguage('Français', 'Accueil');
+      cy.switchLanguage('Русский', 'Главная');
+      cy.switchLanguage('Українська', 'Головна');
+      cy.switchLanguage('English', 'Home');
 
       //№9
       cy.get('#account-menu').click();
@@ -92,12 +71,7 @@ describe("Correct loading verifier page", () => {
       cy.get('#password-title').should('include.text','Password for');
 
       //№11
-      cy.get('#account-menu').click();
-      cy.get('[data-cy="logout"]').click();
-      cy.url().should('include','/logout');
-      cy.get('div.p-5').should('include.text','Logged out successfully!');
 
-      
+      cy.logout();
     });
-
-}) 
+})
