@@ -6,7 +6,7 @@ describe("Correct loading verifier page", () => {
     });
       
     it('User have to enter in account', () => {
-      cy.validLogin(Cypress.env('login'),Cypress.env('password'));
+      cy.validLogin(Cypress.env('username'),Cypress.env('password'));
 
       //1
 

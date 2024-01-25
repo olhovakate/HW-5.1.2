@@ -1,27 +1,14 @@
-/*describe("First test suit",()=>{
-    it("First test",()=>{
-        cy.visit("https://example.cypress.io/todo");
-    })
-})*/
-
-/*describe("test load verifier",()=>{
-    it("loading page",()=>{
-        cy.visit("https://sqlverifier-live-6e21ca0ed768.herokuapp.com/?page=1&sort=id,asc");
-        cy.get('#task-heading', { timeout: 3000 }).should('have.text', 'Tasks');
-    })
-})*/
-
+const selectedEnvironment=Cypress.env('TEST_ENVIRONMENT')||'environment1';
+const environmentConfig=Cypress.env[selectedEnvironment];
 describe("Correct loading verifier page", () => {
-    /*it("loading main page",()=>{
-        Cypress.env("baseURL","https://sqlverifier-staging-08050d656f7a.herokuapp.com")
-        cy.visit("/?page=1&sort=id,asc");
+    it("Should load main page",()=>{
+        cy.loadingpage(selectedEnvironment);
         cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-    });*/
+    });
 
       it('User have to enter in account', () => {
-        const secondBaseUrl=Cypress.env("secondBaseUrl");
-        Cypress.config("baseUrl",secondBaseUrl);
-        cy.validLogin(Cypress.env('login'),Cypress.env('password'));
+        const environmentConfig=Cypress.env[selectedEnvironment];
+        cy.validLogin(environmentConfig.user.username,environmentConfig.user.password);
 
     
       //1

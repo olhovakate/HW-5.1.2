@@ -24,12 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('validLogin', (login, password) => {
+Cypress.Commands.add('loadingpage', (environmentConfig) => {
 
-    cy.visit("baseUrl","/?page=1&sort=id,asc");
+    cy.visit('/?page=1&sort=id,asc', {'base':environmentConfig.baseUrl});
+    cy.visit('/?page=1&sort=id,asc', { baseUrl: Cypress.config('baseUrl') });
+});
+
+Cypress.Commands.add('validLogin',(username,password) => {
     cy.get('#account-menu').click();
     cy.get('#login-item').click();
-    cy.get('input[name="username"]').type(login);
+    cy.get('input[name="username"]').type(username);
     cy.get('input[name="password"]').type(password);
     cy.get('button[type="submit"]').click();
     cy.get('#entity-menu').should('be.visible');
