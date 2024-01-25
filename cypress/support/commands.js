@@ -25,12 +25,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loadingpage', (environmentConfig) => {
-
-    cy.visit('/?page=1&sort=id,asc', {'base':environmentConfig.baseUrl});
-    cy.visit('/?page=1&sort=id,asc', { baseUrl: Cypress.config('baseUrl') });
+    cy.visit('/?page=1&sort=id,asc', { base: environmentConfig.baseUrl });
 });
 
 Cypress.Commands.add('validLogin',(username,password) => {
+    cy.url().should('include',"/?page=1&sort=id,asc");
     cy.get('#account-menu').click();
     cy.get('#login-item').click();
     cy.get('input[name="username"]').type(username);
