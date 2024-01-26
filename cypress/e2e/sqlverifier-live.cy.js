@@ -1,13 +1,17 @@
+const selectedEnvironment=Cypress.env('environment1');
 describe("Correct loading verifier page", () => {
-    it("loading main page",()=>{
-        Cypress.config("baseUrl","https://sqlverifier-live-6e21ca0ed768.herokuapp.com")
-        cy.visit("/?page=1&sort=id,asc");
-        cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-    });
-      
-    it('User have to enter in account', () => {
-      cy.validLogin(Cypress.env('username'),Cypress.env('password'));
-
+    it('should login ', () => {
+      cy.loadingpage(selectedEnvironment);
+     //});
+  /*it('should login using environment2 URL', () => {
+              cy.visit(Cypress.env('environment2').baseUrl);
+            });*/
+    //it('User have to enter in account', () => {    
+      //cy.validLogin(Cypress.env('username'), Cypress.env('password'));
+      cy.validLogin(
+        Cypress.config('env')[selectedEnvironment].user.username,
+        Cypress.config('env')[selectedEnvironment].user.password
+      );
       //1
 
       cy.get('#entity-menu').click();

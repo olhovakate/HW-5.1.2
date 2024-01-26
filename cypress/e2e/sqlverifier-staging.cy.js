@@ -1,21 +1,15 @@
-const selectedEnvironment=Cypress.env('TEST_ENVIRONMENT')||'environment1';
-const environmentConfig=Cypress.env[selectedEnvironment];
+const selectedEnvironment=Cypress.env('environment2');
 describe("Correct loading verifier page", () => {
-      it("Should load main page",()=>{
-        if (!environmentConfig||!environmentConfig.baseUrl){
-            throw new Error('Invalid environment configuration.');
-        }
-        cy.loadingpage(environmentConfig);
-        cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-    });
-
+        /*it('should login using environment1 URL', () => {
+          cy.visit(Cypress.env('environment1').baseUrl);
+        });*/
+        it('should login', () => {
+          cy.loadingpage(selectedEnvironment);
+        });
+    
       it('User have to enter in account', () => {
-        if (!environmentConfig||!environmentConfig.user){
-            throw new Error('Invalid environment configuration.');
-        }
-        //const environmentConfig=Cypress.env[selectedEnvironment];
-        cy.validLogin(environmentConfig.user.username,environmentConfig.user.password);
-
+        //cy.validLogin(Cypress.env('username'), Cypress.env('password'));
+        cy.validLogin(selectedEnvironment);
       //1
         cy.get('#entity-menu').click();
         cy.get('#entity-menu >div >a:nth-child(1)').click();

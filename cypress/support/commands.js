@@ -24,12 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('loadingpage', (environmentConfig) => {
-    cy.visit('/?page=1&sort=id,asc', { base: environmentConfig.baseUrl });
+Cypress.Commands.add('loadingpage',(selectedEnvironment) => {
+    const environmentConfig = Cypress.config('env')[selectedEnvironment];
+    cy.visit('/?page=1&sort=id,asc', {base:environmentConfig.baseUrl});
+    cy.get('#header-tabs').should('not.have.id', 'docs-menu');
 });
 
 Cypress.Commands.add('validLogin',(username,password) => {
-    cy.url().should('include',"/?page=1&sort=id,asc");
+    cy.visit('/?page=1&sort=id,asc');
     cy.get('#account-menu').click();
     cy.get('#login-item').click();
     cy.get('input[name="username"]').type(username);
@@ -41,7 +43,7 @@ Cypress.Commands.add('validLogin',(username,password) => {
   Cypress.Commands.add('switchLanguage', (language, expectedText) => {
     cy.get('#header-tabs > li:nth-child(4) > a').click();
     cy.contains(language).click();
-    cy.get('#header-tabs').contains(expectedText);
+    cy.get('#header-tabs').contains(expectedText).should('be.visible');
   });
 
   Cypress.Commands.add('logout', () => {
