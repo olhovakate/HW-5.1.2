@@ -1,9 +1,11 @@
 describe("Correct loading verifier page", () => {
-  it('should login using environment2 URL', () => {
+  before(()=>{
     cy.visit(Cypress.env('environment2').baseUrl);
     cy.validLogin(
-    Cypress.env('environment2').user.username, 
-    Cypress.env('environment2').user.password);
+      Cypress.env('environment2').user.username, 
+      Cypress.env('environment2').user.password);
+  }); 
+  it('should login using environment2 URL', () => {
   
     //1
     cy.get('#entity-menu').click();
