@@ -24,14 +24,13 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('loadingpage',(selectedEnvironment) => {
+/*Cypress.Commands.add('loadingpage',(selectedEnvironment) => {
     const environmentConfig = Cypress.config('env')[selectedEnvironment];
     cy.visit('/?page=1&sort=id,asc', {base:environmentConfig.baseUrl});
     cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-});
+});*/
 
 Cypress.Commands.add('validLogin',(username,password) => {
-    cy.visit('/?page=1&sort=id,asc');
     cy.get('#account-menu').click();
     cy.get('#login-item').click();
     cy.get('input[name="username"]').type(username);
