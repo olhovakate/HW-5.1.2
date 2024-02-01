@@ -24,11 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-/*Cypress.Commands.add('loadingpage',(selectedEnvironment) => {
-    const environmentConfig = Cypress.config('env')[selectedEnvironment];
-    cy.visit('/?page=1&sort=id,asc', {base:environmentConfig.baseUrl});
-    cy.get('#header-tabs').should('not.have.id', 'docs-menu');
-});*/
+Cypress.Commands.add('registration',(username,email,firstPassword,secondPassword) => {
+    cy.get('#account-menu').click();
+    cy.get('[data-cy="register"]').click();
+    cy.get('input[name="username"]').type(username);
+    cy.get('input[name="email"]').type(email);
+    cy.get('input[name="firstPassword"]').type(firstPassword);
+    cy.get('input[name="secondPassword"]').type(secondPassword);
+    cy.get('#register-submit').click();
+    cy.get('.invalid-feedback').should('not.exist');
+});
 
 Cypress.Commands.add('validLogin',(username,password) => {
     cy.get('#account-menu').click();

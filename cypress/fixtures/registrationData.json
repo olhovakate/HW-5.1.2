@@ -1,0 +1,71 @@
+[
+    {"username":"Tom", 
+     "email":"Tom32@gmail.com", 
+     "firstPassword": "123456789", 
+     "secondPassword": "123456789"},
+
+    {"username":"1", 
+     "email":"ket25@gmail.com", 
+     "firstPassword": "", 
+     "secondPassword": "963852"},
+
+    {"username":"KKKKKKKKKKaaaaaaaaaaTTTTTTTTTTyyyyyyyyyyaaaaaaaaaa", 
+     "email":"", 
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username":"KKKKKKKK1111111111-------",
+     "email":"кет25@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username":"",
+     "email":"eolhovaa5@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username":"KKKKKKKKKKaaaaaaaaaaTTTTTTTTTTyyyyyyyyyyaaaaaaaaaa5",
+     "email":"   ",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username":"!·$%&/&/()",
+     "email":"ket25@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username":"kot",
+     "email":"ket25@gmail.com", 
+     "firstPassword":"963852",
+     "secondPassword": ""},
+
+    {"username": "катя",
+     "email":"ket25@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username": "   ",
+     "email":"ket25@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": "963852"},
+
+    {"username": "ket",
+     "email":"ket25@gmail.com",
+     "firstPassword":"963852",
+     "secondPassword": ""},
+
+    {"username": "ket",
+     "email":"ket25@gmail.com",
+     "firstPassword":"963",
+     "secondPassword": "963852"},
+
+    {"username": "ket",
+     "email":"ket25@gmail.com",
+     "firstPassword":"99999999996666666666333333333388888888885555555555",
+     "secondPassword": "   "},
+
+    {"username": "ket",
+     "email":"ket25@gmail.com",
+     "firstPassword":"999999999966666666663333333333888888888855555555551",
+     "secondPassword": "963852"}
+]
