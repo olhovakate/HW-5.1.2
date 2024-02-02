@@ -1,8 +1,8 @@
 [
     {"username":"Tom", 
-     "email":"Tom32@gmail.com", 
-     "firstPassword": "123456789", 
-     "secondPassword": "123456789"},
+    "email":"Tom32@gmail.com", 
+    "firstPassword": "123456789", 
+    "secondPassword": "123456789"},
 
     {"username":"1", 
      "email":"ket25@gmail.com", 

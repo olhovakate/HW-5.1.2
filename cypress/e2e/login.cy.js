@@ -1,6 +1,6 @@
-const logData = require("../../fixtures/loginData.json");
+const logData = require("../fixtures/loginData.json");
 
-before(()=>{
+beforeEach(()=>{
     cy.visit(Cypress.env('environment1').baseUrl);
 });
 
@@ -12,9 +12,15 @@ describe("Login testing",()=>{
         cy.get('#entity-menu').should('be.visible');
     });
 
-    it("Invalid login testing",()=> {
-        logData.forEach((item)=> {
+    it(`Login with invalid data`, ()=> {
+        logData.forEach((item,)=> {
             cy.validLogin(item.username,item.password);
+            if (item.username || item.password){
+                cy.get('[data-cy="loginError"]').should('exist');
+            }
+
+            cy.get('.btn-close').click();
+            
         });
     });
 })

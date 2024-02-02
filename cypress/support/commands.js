@@ -24,24 +24,35 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('registration',(username,email,firstPassword,secondPassword) => {
+Cypress.Commands.add('registration',(username,email,password,confirmPassword) => {
     cy.get('#account-menu').click();
     cy.get('[data-cy="register"]').click();
+    if (username !=="") {
     cy.get('input[name="username"]').type(username);
+    }
+    if (email !=="") {
     cy.get('input[name="email"]').type(email);
-    cy.get('input[name="firstPassword"]').type(firstPassword);
-    cy.get('input[name="secondPassword"]').type(secondPassword);
+    }
+    if (password !=="") {
+    cy.get('input[name="firstPassword"]').type(password);
+    }
+    if (confirmPassword !=="") {
+    cy.get('input[name="secondPassword"]').type(confirmPassword);
+    }
     cy.get('#register-submit').click();
-    cy.get('.invalid-feedback').should('not.exist');
 });
 
 Cypress.Commands.add('validLogin',(username,password) => {
     cy.get('#account-menu').click();
     cy.get('#login-item').click();
+
+    if (username !=="") {
     cy.get('input[name="username"]').type(username);
+    }
+    if (password !=="") {
     cy.get('input[name="password"]').type(password);
+    }
     cy.get('button[type="submit"]').click();
-    cy.get('#entity-menu').should('be.visible');
   });
   
   Cypress.Commands.add('switchLanguage', (language, expectedText) => {

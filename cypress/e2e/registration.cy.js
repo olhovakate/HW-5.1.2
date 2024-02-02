@@ -1,5 +1,5 @@
-const logData = require("../../fixtures/registrationData.json");
-before(()=>{
+const logData = require("../fixtures/registrationData.json");
+beforeEach(()=>{
     cy.visit(Cypress.env('environment1').baseUrl);
 });
 describe("Registration testing",()=>{ 
@@ -11,7 +11,7 @@ describe("Registration testing",()=>{
         });
 
     it("Invalid registration testing",()=> {
-        logData.forEach((item)=> {
+        logData.slice(1).forEach((item)=> {
             cy.registration(item.username,item.email,item.firstPassword,item.secondPassword);
             cy.get('.invalid-feedback').should('exist');
         });
