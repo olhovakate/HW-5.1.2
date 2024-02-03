@@ -1,6 +1,6 @@
 describe("Verifier login-Ui", () => {
     before(()=>{
-        cy.visit(Cypress.env('environment2').baseUrl);
+        cy.visit("https://sqlverifier-staging-08050d656f7a.herokuapp.com/?page=1&sort=id,asc");
 
     it.only("User can login",()=> { 
         cy.get('#account-menu').click();
