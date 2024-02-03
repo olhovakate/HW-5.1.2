@@ -1,4 +1,4 @@
-const logData = require("../fixtures/loginData.json");
+const logData = require("../../fixtures/loginData.json");
 
 beforeEach(()=>{
     cy.visit(Cypress.env('environment1').baseUrl);
